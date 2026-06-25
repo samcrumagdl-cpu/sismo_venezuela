@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ficha Ejecutiva | Sismos Venezuela — 24 de junio de 2026</title>
+  <style>
+    :root {
+      --rojo:     #c0392b;
+      --rojo-cl:  #e74c3c;
+      --naranja:  #d35400;
+      --azul:     #1a3a5c;
+      --azul-cl:  #2c5f8a;
+      --verde:    #1a6640;
+      --gris-bg:  #f0f3f7;
+      --gris-bd:  #d5dce8;
+      --texto:    #1c1c2e;
+      --blanco:   #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--gris-bg);
+      color: var(--texto);
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    /* ─── ENCABEZADO ─── */
+    header {
+      background: linear-gradient(135deg, #0f2540 0%, #1a3a5c 100%);
+      color: var(--blanco);
+      padding: 24px 40px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      border-bottom: 5px solid var(--rojo);
+    }
+    .hdr-icon { font-size: 44px; flex-shrink: 0; }
+    .hdr-text h1 { font-size: 20px; font-weight: 800; letter-spacing: .3px; }
+    .hdr-text p  { font-size: 12px; opacity: .75; margin-top: 3px; }
+    .hdr-badge {
+      margin-left: auto;
+      background: var(--rojo);
+      color: var(--blanco);
+      font-size: 12px; font-weight: 800;
+      padding: 9px 18px; border-radius: 5px;
+      text-align: center; white-space: nowrap;
+    }
+    .hdr-badge span { display: block; font-size: 10px; font-weight: 400; opacity: .85; margin-top: 2px; }
+
+    /* ─── CONTENEDOR ─── */
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 26px 20px 50px; }
+
+    /* ─── KPI BAND ─── */
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .kpi {
+      background: var(--blanco);
+      border: 1px solid var(--gris-bd);
+      border-top: 4px solid var(--azul-cl);
+      border-radius: 7px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .kpi.r { border-top-color: var(--rojo); }
+    .kpi.o { border-top-color: var(--naranja); }
+    .kpi-val { font-size: 30px; font-weight: 900; color: var(--azul); line-height: 1.1; }
+    .kpi.r .kpi-val { color: var(--rojo); }
+    .kpi.o .kpi-val { color: var(--naranja); }
+    .kpi-lbl { font-size: 10.5px; text-transform: uppercase; letter-spacing: .6px; color: #666; margin-top: 4px; }
+
+    /* ─── GRIDS ─── */
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .full { grid-column: 1/-1; }
+
+    /* ─── CARD ─── */
+    .card { background: var(--blanco); border: 1px solid var(--gris-bd); border-radius: 7px; overflow: hidden; }
+    .ch {
+      padding: 9px 15px;
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px;
+      color: var(--blanco);
+      display: flex; align-items: center; gap: 7px;
+      background: var(--azul);
+    }
+    .ch.r  { background: var(--rojo); }
+    .ch.o  { background: var(--naranja); }
+    .ch.v  { background: var(--verde); }
+    .cb { padding: 15px; }
+
+    /* ─── INFO TABLE ─── */
+    .it { width: 100%; border-collapse: collapse; }
+    .it tr:not(:last-child) td { border-bottom: 1px solid var(--gris-bd); }
+    .it td { padding: 7px 9px; vertical-align: top; font-size: 13px; }
+    .it td:first-child {
+      font-weight: 700; font-size: 11px; text-transform: uppercase;
+      letter-spacing: .4px; color: #555; width: 36%; white-space: nowrap;
+    }
+
+    /* ─── LISTAS ─── */
+    ul.cl { list-style: none; padding: 0; }
+    ul.cl li {
+      padding: 6px 0 6px 22px; position: relative;
+      border-bottom: 1px solid var(--gris-bd); font-size: 13px;
+    }
+    ul.cl li:last-child { border-bottom: none; }
+    ul.cl li::before { content: "▸"; position: absolute; left: 4px; color: var(--azul-cl); top: 8px; }
+
+    /* ─── ESCALA MERCALLI ─── */
+    .mercalli-row { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+    .merc-zona { font-size: 12px; font-weight: 600; width: 155px; flex-shrink: 0; }
+    .merc-barra-bg { flex: 1; background: #e5eaf3; border-radius: 4px; height: 11px; }
+    .merc-barra { height: 11px; border-radius: 4px; }
+    .merc-tag {
+      font-size: 11px; font-weight: 700; color: var(--blanco);
+      padding: 2px 8px; border-radius: 3px; white-space: nowrap;
+    }
+    .critico  { background: #c0392b; }
+    .severo   { background: #d35400; }
+    .moderado { background: #2980b9; }
+
+    /* ─── CRONOLOGÍA ─── */
+    .tl { position: relative; padding-left: 30px; }
+    .tl::before {
+      content: ""; position: absolute; left: 11px; top: 0; bottom: 0;
+      width: 2px; background: var(--gris-bd);
+    }
+    .tl-item { position: relative; margin-bottom: 13px; }
+    .tl-item::before {
+      content: ""; position: absolute; left: -23px; top: 5px;
+      width: 11px; height: 11px; border-radius: 50%;
+      background: var(--azul-cl); border: 2px solid var(--blanco);
+      box-shadow: 0 0 0 2px var(--azul-cl);
+    }
+    .tl-item.rd::before { background: var(--rojo); box-shadow: 0 0 0 2px var(--rojo); }
+    .tl-item.or::before { background: var(--naranja); box-shadow: 0 0 0 2px var(--naranja); }
+    .tl-hora { font-size: 11px; font-weight: 700; color: #888; }
+    .tl-desc { font-size: 12.5px; }
+
+    /* ─── PÍLDORAS PAÍSES ─── */
+    .pill-wrap { display: flex; flex-wrap: wrap; gap: 7px; padding-top: 4px; }
+    .pill {
+      background: #eaf0f8; border: 1px solid #c4d3e8;
+      border-radius: 20px; padding: 3px 11px;
+      font-size: 12px; font-weight: 600; color: var(--azul);
+    }
+    .pill.org { background: #edf7f1; border-color: #aed6be; color: var(--verde); }
+
+    /* ─── SEMÁFORO ─── */
+    .sem-wrap { display: flex; align-items: center; gap: 16px; justify-content: center; padding: 10px 0; }
+    .luz {
+      width: 44px; height: 44px; border-radius: 50%; opacity: .2;
+    }
+    .luz.on { opacity: 1; box-shadow: 0 0 16px 4px currentColor; }
+    .lv { background:#27ae60; color:#27ae60; }
+    .lo { background:#e67e22; color:#e67e22; }
+    .lr { background:#c0392b; color:#c0392b; }
+    .sem-lbl { font-size: 22px; font-weight: 900; color: var(--rojo); }
+    .sem-sub { font-size: 11px; color: #777; text-align: center; margin-top: 5px; }
+
+    /* ─── FUENTES ─── */
+    .fgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .fsec-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;
+      color: var(--azul); margin: 10px 0 6px; border-bottom: 1px solid var(--gris-bd); padding-bottom: 4px; }
+    .fsec-title:first-child { margin-top: 0; }
+    .fitem {
+      font-size: 11.5px; padding: 5px 9px;
+      background: #f2f5fb; border-radius: 4px;
+      border-left: 3px solid var(--azul-cl);
+    }
+    .fitem a { color: var(--azul-cl); text-decoration: none; font-weight: 600; }
+    .fitem a:hover { text-decoration: underline; }
+
+    footer {
+      border-top: 1px solid var(--gris-bd);
+      text-align: center; font-size: 11px; color: #999;
+      padding: 14px; margin-top: 10px;
+    }
+
+    @media (max-width: 800px) {
+      .kpis, .g2, .g3 { grid-template-columns: 1fr; }
+      header { flex-wrap: wrap; }
+      .hdr-badge { margin-left: 0; }
+      .fgrid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ENCABEZADO -->
+<header>
+  <div class="hdr-icon">🌍</div>
+  <div class="hdr-text">
+    <h1>FICHA DE SITUACIÓN — DOBLETE SÍSMICO VENEZUELA</h1>
+    <p>Evento: M7.2 + M7.5 (39 seg de diferencia) · Epicentro: Morón–Montalbán, centro-norte · 24 de junio de 2026 · Actualización: 25 jun 2026</p>
+  </div>
+  <div class="hdr-badge">⚠ ALERTA ROJA<span>Emergencia nacional activa</span></div>
+</header>
+
+<div class="wrap">
+
+  <!-- KPIs -->
+  <div class="kpis">
+    <div class="kpi r">
+      <div class="kpi-val">7.5</div>
+      <div class="kpi-lbl">Magnitud máxima (Mw)</div>
+    </div>
+    <div class="kpi r">
+      <div class="kpi-val">VIII–IX</div>
+      <div class="kpi-lbl">Intensidad Mercalli</div>
+    </div>
+    <div class="kpi r">
+      <div class="kpi-val">164+</div>
+      <div class="kpi-lbl">Fallecidos confirmados</div>
+    </div>
+    <div class="kpi o">
+      <div class="kpi-val">971+</div>
+      <div class="kpi-lbl">Heridos reportados</div>
+    </div>
+    <div class="kpi o">
+      <div class="kpi-val">30 k+</div>
+      <div class="kpi-lbl">Desaparecidos estimados</div>
+    </div>
+  </div>
+
+  <!-- FILA 1: DATOS TÉCNICOS + ENERGÍA -->
+  <div class="g2">
+
+    <div class="card">
+      <div class="ch">📍 Parámetros técnicos del evento</div>
+      <div class="cb">
+        <table class="it">
+          <tr>
+            <td>Fenómeno</td>
+            <td><strong>Doblete sísmico</strong> — dos terremotos mayores en 39 segundos de diferencia sobre el mismo sistema tectónico</td>
+          </tr>
+          <tr>
+            <td>Sismo 1</td>
+            <td><strong>M 7.1–7.2 Mw</strong> · 18:04 LT · Profundidad: superficial–intermedia<br>Epicentro: eje <strong>Morón–Montalbán</strong>, centro-norte de Venezuela</td>
+          </tr>
+          <tr>
+            <td>Sismo 2</td>
+            <td><strong>M 7.5 Mw</strong> · 18:04:39 LT · Profundidad: baja<br>Mismo sistema tectónico regional · Mayor liberación de energía</td>
+          </tr>
+          <tr>
+            <td>Energía relativa</td>
+            <td>El sismo M7.5 liberó <strong>2–3 veces más energía</strong> que el M7.2 (escala logarítmica)</td>
+          </tr>
+          <tr>
+            <td>Contexto histórico</td>
+            <td>Una de las mayores liberaciones de energía sísmica en Venezuela en <strong>más de 126 años</strong></td>
+          </tr>
+          <tr>
+            <td>Alcance de percepción</td>
+            <td>Sentido en Caracas, La Guaira, Miranda, Aragua, Carabobo, Yaracuy, áreas del Caribe y países vecinos</td>
+          </tr>
+          <tr>
+            <td>Fuente sismológica</td>
+            <td>USGS — United States Geological Survey</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ch r">🔴 Intensidad por zona (Escala Mercalli Modificada)</div>
+      <div class="cb">
+        <div class="mercalli-row">
+          <span class="merc-zona">Epicentro (Morón–Montalbán)</span>
+          <div class="merc-barra-bg"><div class="merc-barra critico" style="width:97%"></div></div>
+          <span class="merc-tag critico">VIII–IX</span>
+        </div>
+        <div class="mercalli-row">
+          <span class="merc-zona">La Guaira</span>
+          <div class="merc-barra-bg"><div class="merc-barra critico" style="width:93%"></div></div>
+          <span class="merc-tag critico">VIII–IX</span>
+        </div>
+        <div class="mercalli-row">
+          <span class="merc-zona">Caracas</span>
+          <div class="merc-barra-bg"><div class="merc-barra severo" style="width:82%"></div></div>
+          <span class="merc-tag severo">VII–VIII</span>
+        </div>
+        <div class="mercalli-row">
+          <span class="merc-zona">Carabobo / Aragua</span>
+          <div class="merc-barra-bg"><div class="merc-barra severo" style="width:78%"></div></div>
+          <span class="merc-tag severo">VII–VIII</span>
+        </div>
+        <div class="mercalli-row">
+          <span class="merc-zona">Miranda</span>
+          <div class="merc-barra-bg"><div class="merc-barra severo" style="width:72%"></div></div>
+          <span class="merc-tag severo">VII–VIII</span>
+        </div>
+        <div style="margin-top:12px;padding:10px;background:#fdf2f2;border-radius:5px;border-left:3px solid var(--rojo);">
+          <p style="font-size:12px;"><strong>Mercalli VIII:</strong> Daños considerables, caída de fachadas, colapso parcial de edificaciones.<br>
+          <strong>Mercalli IX:</strong> Daños estructurales graves, derrumbe de edificios vulnerables, rotura de tuberías, destrucción parcial de infraestructura.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FILA 2: CRONOLOGÍA COMPLETA -->
+  <div class="card full" style="margin-bottom:16px;">
+    <div class="ch">⏱ Cronología detallada del evento — 24 al 25 de junio de 2026</div>
+    <div class="cb">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 28px;">
+
+        <div>
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#888;margin-bottom:10px;">24 de junio — Tarde/Noche</p>
+          <div class="tl">
+            <div class="tl-item rd">
+              <div class="tl-hora">18:04 hrs — SISMO 1 (M7.2)</div>
+              <div class="tl-desc">Primer terremoto con epicentro en Morón–Montalbán. Aceleraciones intensas en superficie. Evacuaciones espontáneas en todo el centro-norte.</div>
+            </div>
+            <div class="tl-item rd">
+              <div class="tl-hora">18:04:39 hrs — SISMO 2 (M7.5)</div>
+              <div class="tl-desc">Segundo terremoto, mayor magnitud. Estructuras ya dañadas sufren fallas adicionales. Colapso de edificaciones en Caracas y La Guaira.</div>
+            </div>
+            <div class="tl-item or">
+              <div class="tl-hora">18:05–18:15 hrs</div>
+              <div class="tl-desc">Cortes eléctricos, colapso de telecomunicaciones, congestión vial masiva. Activación de protocolos de evacuación.</div>
+            </div>
+            <div class="tl-item or">
+              <div class="tl-hora">18:10–18:30 hrs</div>
+              <div class="tl-desc">Primeros daños visibles: fachadas desprendidas, muros agrietados, caída de cornisas y cristales.</div>
+            </div>
+            <div class="tl-item or">
+              <div class="tl-hora">18:20–19:00 hrs</div>
+              <div class="tl-desc">Confirmación de derrumbes. Vecinos realizan rescates espontáneos. Personas atrapadas entre escombros. Bloqueo de calles.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-hora">19:00–20:00 hrs</div>
+              <div class="tl-desc">Saturación hospitalaria. Traumatismos, fracturas, lesiones por derrumbe. Activación de protocolos de desastre en hospitales.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-hora">20:00–22:00 hrs</div>
+              <div class="tl-desc">Se dimensiona la magnitud real: daños en vivienda, infraestructura pública, transporte, redes eléctricas y agua potable. La Guaira identificada como zona de devastación severa.</div>
+            </div>
+            <div class="tl-item rd">
+              <div class="tl-hora">20:00–23:00 hrs</div>
+              <div class="tl-desc">Daños en infraestructura estratégica: Aeropuerto Simón Bolívar, ferrocarril, transporte masivo. Suspensión preventiva de operaciones.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-hora">22:00–24:00 hrs</div>
+              <div class="tl-desc">Primer balance oficial de víctimas: fallecidos confirmados, centenares de heridos, numerosos desaparecidos. Labores de búsqueda nocturna activas.</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#888;margin-bottom:10px;">25 de junio — Madrugada / Mañana / Tarde</p>
+          <div class="tl">
+            <div class="tl-item or">
+              <div class="tl-hora">00:00–04:00 hrs</div>
+              <div class="tl-desc">Réplicas continuas provocan nuevas evacuaciones y caídas de elementos estructurales. Rescatistas trabajan bajo riesgo permanente.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-hora">01:00–06:00 hrs</div>
+              <div class="tl-desc">Operación nacional de búsqueda y rescate: Protección Civil, Bomberos, FF.AA. y personal médico. Prioridades: sobrevivientes, atención urgente, comunicaciones.</div>
+            </div>
+            <div class="tl-item rd">
+              <div class="tl-hora">04:00–08:00 hrs</div>
+              <div class="tl-desc"><strong>Declaración de emergencia nacional.</strong> Movilización de recursos, suspensión de actividades no esenciales, apertura de refugios temporales.</div>
+            </div>
+            <div class="tl-item or">
+              <div class="tl-hora">08:00–12:00 hrs</div>
+              <div class="tl-desc">Confirmación de daños generalizados: edificios totalmente colapsados, comunidades aisladas, miles desplazados. Remoción de escombros en múltiples frentes.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-hora">10:00–15:00 hrs</div>
+              <div class="tl-desc">Actualización de víctimas: más de 100 fallecidos, cerca de 1,000 heridos. Cifras sujetas a revisión. Rescates activos continúan.</div>
+            </div>
+            <div class="tl-item rd">
+              <div class="tl-hora">Tarde del 25 de junio</div>
+              <div class="tl-desc">Llegada de ayuda internacional. Equipos especializados SAR (México, España, EE.UU., UE). Inicio de transición hacia fase de recuperación.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 3: DAÑOS + POBLACIÓN -->
+  <div class="g2">
+
+    <div class="card">
+      <div class="ch r">🏗 Daños a infraestructura y servicios</div>
+      <div class="cb">
+        <ul class="cl">
+          <li><strong>Edificios residenciales colapsados</strong> en Caracas (Altamira, El Paraíso), La Guaira y estados del centro-norte.</li>
+          <li><strong>Aeropuerto Internacional Simón Bolívar</strong> — cerrado por daños estructurales. Vuelos suspendidos.</li>
+          <li><strong>Instalaciones ferroviarias y transporte masivo</strong> con daños estructurales. Evaluaciones en curso.</li>
+          <li><strong>Red vial crítica:</strong> colapso de carreteras y accesos, bloqueo de calles por escombros.</li>
+          <li><strong>Redes eléctricas:</strong> cortes parciales en múltiples estados desde las primeras horas.</li>
+          <li><strong>Sistemas de abastecimiento de agua:</strong> rotura de tuberías principales en zonas Mercalli IX.</li>
+          <li><strong>Hospitales y centros médicos</strong> con daños operativos; capacidad de respuesta reducida.</li>
+          <li><strong>Telecomunicaciones:</strong> saturación y caída parcial de redes móviles en las primeras horas.</li>
+          <li><strong>Alerta de tsunami</strong> activada para costas de La Guaira y zonas del Caribe.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ch o">👥 Balance de víctimas y población afectada</div>
+      <div class="cb">
+        <table class="it">
+          <tr><td>Fallecidos</td><td><strong style="color:var(--rojo)">164+ confirmados</strong> — cifra en actualización constante</td></tr>
+          <tr><td>Heridos</td><td><strong>971+</strong> atendidos en centros médicos</td></tr>
+          <tr><td>Desaparecidos</td><td><strong>+30,000</strong> — estimación preliminar</td></tr>
+          <tr><td>Damnificados</td><td>Decenas de miles sin vivienda habitable; apertura de refugios temporales</td></tr>
+          <tr><td>Estimación EE.UU.</td><td>Entre 10,000 y 100,000 posibles fallecidos (sin verificación técnica oficial)</td></tr>
+          <tr><td>Tipo de lesiones</td><td>Traumatismos, fracturas, cortaduras por vidrios, lesiones por derrumbe y crisis nerviosas</td></tr>
+          <tr><td>Estado</td><td>Operaciones de búsqueda y rescate <strong>activas</strong>. Cifras definitivas aún no disponibles</td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FILA 4: RESPUESTA NACIONAL + APOYO INTERNACIONAL -->
+  <div class="g2">
+
+    <div class="card">
+      <div class="ch v">🇻🇪 Respuesta institucional nacional</div>
+      <div class="cb">
+        <ul class="cl">
+          <li><strong>Delcy Rodríguez</strong> (Presidenta encargada) declaró estado de emergencia nacional y zona de desastre en La Guaira.</li>
+          <li>Despliegue de <strong>Protección Civil, Bomberos y Fuerzas Armadas</strong> en operaciones de búsqueda y rescate.</li>
+          <li>Apertura de <strong>refugios temporales</strong> para personas desplazadas de viviendas inhabilitadas.</li>
+          <li>Cierre del <strong>Aeropuerto Internacional Simón Bolívar</strong> y activación de rutas de emergencia alternas.</li>
+          <li><strong>Suspensión de clases</strong> y actividades no esenciales a nivel nacional.</li>
+          <li>Personal de salud cubano ya presente en Venezuela <strong>movilizado completamente</strong> para reforzar atención médica.</li>
+          <li>Centros de coordinación operando para consolidar información de todas las regiones afectadas.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ch v">🌐 Ayuda internacional — Gobiernos y organismos</div>
+      <div class="cb">
+        <div class="pill-wrap" style="margin-bottom:12px;">
+          <span class="pill">🇲🇽 México</span>
+          <span class="pill">🇺🇸 Estados Unidos</span>
+          <span class="pill">🇪🇸 España</span>
+          <span class="pill">🇫🇷 Francia</span>
+          <span class="pill">🇮🇹 Italia</span>
+          <span class="pill">🇨🇿 República Checa</span>
+          <span class="pill">🇨🇳 China</span>
+          <span class="pill">🇦🇷 Argentina</span>
+          <span class="pill">🇧🇷 Brasil</span>
+          <span class="pill">🇨🇱 Chile</span>
+          <span class="pill org">🇺🇳 ONU / OCHA</span>
+          <span class="pill org">🇪🇺 Unión Europea</span>
+          <span class="pill org">🔴 Cruz Roja Intl.</span>
+        </div>
+        <table class="it">
+          <tr><td>México</td><td>Equipos SAR, personal militar especializado en emergencias, médicos y apoyo logístico.</td></tr>
+          <tr><td>Estados Unidos</td><td>Coordinación humanitaria, asistencia técnica, equipos de rescate (Fairfax County / Los Ángeles). Secretario Rubio en contacto directo con Delcy Rodríguez.</td></tr>
+          <tr><td>España</td><td>Equipos USAR (Urban Search and Rescue), especialistas en estructuras colapsadas y protección civil. Plan de Ayuda Humanitaria activado.</td></tr>
+          <tr><td>Francia / Italia</td><td>Equipos de respuesta rápida, especialistas en emergencias, capacidades médicas y logísticas.</td></tr>
+          <tr><td>República Checa</td><td>Equipos especializados de protección civil y recursos para búsqueda y rescate.</td></tr>
+          <tr><td>Unión Europea</td><td>Mecanismo Europeo de Protección Civil activado (confirmado por Cadena SER/Bruselas). €5 millones en fondos de respuesta rápida desbloqueados.</td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FILA 5: NIVEL DE RIESGO -->
+  <div class="card full" style="margin-bottom:16px;">
+    <div class="ch r">🚨 Nivel de riesgo y situación operativa actual</div>
+    <div class="cb">
+      <div style="display:grid;grid-template-columns:160px 1fr;gap:24px;align-items:center;">
+        <div>
+          <div class="sem-wrap">
+            <div class="luz lv">●</div>
+            <div class="luz lo">●</div>
+            <div class="luz lr on">●</div>
+          </div>
+          <div class="sem-lbl" style="text-align:center;">ROJO</div>
+          <div class="sem-sub">Emergencia nacional activa<br>Múltiples frentes de rescate</div>
+        </div>
+        <div>
+          <table class="it">
+            <tr><td>Situación general</td><td>Emergencia nacional declarada. Operaciones SAR activas en múltiples zonas simultáneamente.</td></tr>
+            <tr><td>Riesgos inmediatos</td><td>Réplicas sísmicas en curso. Riesgo de colapso secundario en estructuras debilitadas. Alerta de tsunami vigente en costas.</td></tr>
+            <tr><td>Accesibilidad</td><td>Aeropuerto principal cerrado. Accesos a La Guaira comprometidos. Logística humanitaria con restricciones operativas.</td></tr>
+            <tr><td>Sistema de salud</td><td>Hospitales bajo presión máxima. Refuerzo con personal médico internacional en proceso.</td></tr>
+            <tr><td>Proyección</td><td>Alta probabilidad de aumento en cifras de víctimas conforme avancen las labores de remoción de escombros.</td></tr>
+            <tr><td>Fase actual</td><td>Transición de rescate de emergencia hacia gestión integral del desastre y recuperación inicial.</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SÍNTESIS EJECUTIVA -->
+  <div class="card full" style="margin-bottom:16px;">
+    <div class="ch">📋 Síntesis ejecutiva</div>
+    <div class="cb">
+      <p style="font-size:13px;line-height:1.75;color:#2a2a3e;">
+        El 24 de junio de 2026, Venezuela fue impactada por un <strong>doblete sísmico</strong> de alta energía: dos terremotos de M7.2 y M7.5 ocurridos con apenas 39 segundos de diferencia, con epicentro en el eje <strong>Morón–Montalbán</strong>, en el centro-norte del país. El evento constituye la mayor liberación de energía sísmica registrada en Venezuela en más de 126 años. La secuencia completa evolucionó de forma acelerada: desde las evacuaciones masivas y los primeros colapsos estructurales en las horas iniciales, pasando por la saturación hospitalaria y la afectación de infraestructura estratégica durante la noche, hasta la declaración de emergencia nacional y la activación de una operación de rescate de gran escala en las primeras 24 horas. Las zonas más afectadas —<strong>La Guaira</strong> (intensidad Mercalli VIII–IX) y <strong>Caracas</strong> (VII–VIII)— concentran el mayor número de víctimas, derrumbes y disrupciones de servicios esenciales. La respuesta internacional es amplia: al menos 10 países y tres organismos multilaterales han activado mecanismos de apoyo. La cifra de fallecidos supera los 164 y se encuentra en actualización permanente.
+      </p>
+    </div>
+  </div>
+
+  <!-- FUENTES -->
+  <div class="card full">
+    <div class="ch">📚 Fuentes consultadas</div>
+    <div class="cb">
+
+      <div class="fsec-title">Medios nacionales (Venezuela)</div>
+      <div class="fgrid">
+        <div class="fitem"><a href="https://lapatilla.com/2026/06/24/terremoto-de-magnitud-7-0-se-sintio-en-venezuela-este-24jun/" target="_blank">La Patilla</a> — Terremoto de magnitud 7.0 se sintió en Venezuela este 24Jun</div>
+        <div class="fitem"><a href="https://www.infobae.com/venezuela/2026/06/25/en-vivo-terremoto-en-venezuela/" target="_blank">Infobae Venezuela</a> — EN VIVO: Continúan las tareas de rescate tras el terremoto</div>
+      </div>
+
+      <div class="fsec-title">Medios internacionales en español</div>
+      <div class="fgrid">
+        <div class="fitem"><a href="https://elpais.com/america/2026-06-24/un-terremoto-de-71-sacude-la-costa-norte-de-venezuela.html" target="_blank">El País</a> — Un terremoto de 7,1 sacude varias regiones de Venezuela</div>
+        <div class="fitem"><a href="https://elpais.com/america/2026-06-25/el-sismo-en-venezuela-causa-danos-y-obliga-a-cerrar-el-aeropuerto-de-maiquetia.html" target="_blank">El País</a> — El sismo causa daños y obliga a cerrar el aeropuerto de Maiquetía</div>
+        <div class="fitem"><a href="https://elpais.com/expres/2026-06-25/venezuela-sufre-dos-terremotos-historicos-72-y-75-grados-separados-solo-39-segundos.html" target="_blank">El País Expres</a> — Venezuela sufre dos terremotos históricos separados por 39 segundos</div>
+        <div class="fitem"><a href="https://www.milenio.com/internacional/reportan-sismo-venezuela-24-junio-2026" target="_blank">Milenio</a> — Dos terremotos de magnitud 7.2 y 7.5 sacuden Venezuela</div>
+        <div class="fitem"><a href="https://www.univision.com/noticias/terremoto-en-venezuela-hoy-videos-muestran-el-momento-exacto-del-fuerte-sismo-video" target="_blank">Univisión</a> — Videos muestran el momento exacto del fuerte sismo</div>
+        <div class="fitem"><a href="https://cadenaser.com/nacional/2026/06/25/bruselas-activa-el-mecanismo-europeo-de-proteccion-civil-en-venezuela-tras-el-doble-terremoto-cadena-ser/" target="_blank">Cadena SER</a> — Bruselas activa el Mecanismo Europeo de Protección Civil</div>
+        <div class="fitem"><a href="https://www.huffingtonpost.es/global/los-terremotos-prueba-fuego-gestion-apoyo-mundial-delcy-rodriguez-f202606.html" target="_blank">HuffPost España</a> — Los terremotos, una prueba de fuego para la gestión gubernamental</div>
+      </div>
+
+      <div class="fsec-title">Agencias internacionales</div>
+      <div class="fgrid">
+        <div class="fitem"><a href="https://www.reuters.com/world/americas/earthquakes-shake-venezuela-capital-2026-06-24/" target="_blank">Reuters</a> — Two major earthquakes strike Venezuela (24 jun 2026)</div>
+        <div class="fitem"><a href="https://www.reuters.com/world/americas/us-says-it-is-mobilizing-assistance-venezuela-after-earthquakes-2026-06-25/" target="_blank">Reuters</a> — US says it is mobilizing assistance for Venezuela after earthquakes</div>
+        <div class="fitem"><a href="https://apnews.com/" target="_blank">Associated Press (AP)</a> — Cobertura de seguimiento continuo</div>
+      </div>
+
+      <div class="fsec-title">Medios internacionales en inglés</div>
+      <div class="fgrid">
+        <div class="fitem"><a href="https://www.theguardian.com/world/2026/jun/25/earthquake-venezuela-caracas-tremors-aftershocks" target="_blank">The Guardian</a> — Venezuela declares state of emergency after deadly twin earthquakes</div>
+        <div class="fitem"><a href="https://www.lemonde.fr/en/environment/article/2026/06/25/venezuela-reels-after-deadliest-double-earthquake-in-126-years_6754858_114.html" target="_blank">Le Monde</a> — Venezuela reels after deadliest double earthquake in 126 years</div>
+        <div class="fitem"><a href="https://timesofindia.indiatimes.com/world/rest-of-world/twin-earthquakes-shake-venezuela-scenes-of-fear-and-destruction-in-caracas/photostory/131984004.cms" target="_blank">Times of India</a> — Twin earthquakes shake Venezuela: scenes of fear and destruction</div>
+        <div class="fitem"><a href="https://www.bbc.com/news" target="_blank">BBC News</a> — Cobertura de seguimiento continuo</div>
+        <div class="fitem"><a href="https://www.aljazeera.com/news/liveblog/2026/6/25/venezuela-earthquakes-live-two-powerful-quakes-shake-s-american-country" target="_blank">Al Jazeera</a> — Liveblog Venezuela earthquakes (25 jun 2026)</div>
+        <div class="fitem"><a href="https://www.cnn.com/2026/06/24/weather/live-news/venezuela-earthquake-puerto-rico-tsunami" target="_blank">CNN</a> — Live updates: Venezuela earthquake (24–25 jun 2026)</div>
+      </div>
+
+      <div class="fsec-title">Medios europeos / seguimiento</div>
+      <div class="fgrid">
+        <div class="fitem"><a href="https://cnnespanol.cnn.com/" target="_blank">CNN en Español</a> — Cobertura de seguimiento</div>
+        <div class="fitem"><a href="https://www.france24.com/es/" target="_blank">France 24 Español</a> — Cobertura de seguimiento</div>
+        <div class="fitem"><a href="https://www.dw.com/es/" target="_blank">Deutsche Welle Español</a> — Cobertura de seguimiento</div>
+        <div class="fitem"><a href="https://www.euronews.com/2026/06/25/71-and-75-magnitude-quakes-strike-venezuela-causing-what-officials-described-as-severe-dam" target="_blank">Euronews</a> — 7.1 and 7.5 magnitude quakes strike Venezuela</div>
+      </div>
+
+      <p style="font-size:11px;color:#aaa;margin-top:12px;">⚠ Las cifras de víctimas y daños son preliminares y sujetas a actualización. Última verificación: 25 de junio de 2026 · Elaborado para uso interno de análisis de situación.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Ficha Ejecutiva — Doblete Sísmico Venezuela · 24–25 de junio de 2026 · Basada en fuentes internacionales verificadas · Uso interno — análisis de situación
+</footer>
+
+</body>
+</html>
